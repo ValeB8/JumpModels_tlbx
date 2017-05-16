@@ -1,0 +1,14 @@
+**************************************************************************************************************************************************************************
+The toolbox can only be fully used with CVX for Matlab installed. Please install the CVX package!
+**************************************************************************************************************************************************************************
+
+To train and valudate a RJM:
+- define the cost function to optimize (see LSPB_builder.m for reference)
+- run jumpOptimizer.m specifying all the options required, otherwise they will be set to their default values 
+  (see JumpClassifier.m for reference)
+- create a code to validate the model depending on the desired quantity to be evaluated 
+  (see validation_jumpModelsLS.m and validation_jumpModelclass.m for reference)
+
+To reproduce the examples reported in Section 4.1 run:
+- JumpClassifier.m --> Learn and validate a Jumping Classifier
+- EnergyConumptionRJM.m ---> Learn and validate the models for the electric consumption of 4 appliances

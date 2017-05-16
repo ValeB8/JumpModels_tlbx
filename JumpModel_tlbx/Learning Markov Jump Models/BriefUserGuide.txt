@@ -1,0 +1,14 @@
+To train and valudate a MJM:
+- run solveMJLS.m (see ConvergenceTest.m for reference)
+- validate the model with valMJLS.m (see ConvergenceTest.m for reference)
+
+To reproduce the examples reported in Section 4.2 run:
+- ConvergenceTest.m
+- MonteCarloSimulation.m
+- NTest.m
+- OnlineTest.m
+- SNRTest.m
+--> Identify a Markov Jump linear System
+- EnergyConumption.m ---> Learn and validate the models for the electric consumption of 4 appliances
+
+Look at OnlineTest.m as a reference to use the method for online learning

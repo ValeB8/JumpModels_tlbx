@@ -1,0 +1,35 @@
+Learning Markov Jump Models (Section 3.2)
+* The folder 'Code' contains all the functions required to train a MJLS from data and validate the obtained model
+    - The subfolder 'Training' constains:
+        - solveMJLS.m : function that has to be called to perform the training of the model
+        - the folder 'functions' constains all the functions equired to perform the training:
+            - MJLSid.m : function called explicitly in solveMJLS.m
+            - multi_rls.m : multi-model recursive least square (Algorithm 2 in Section 3.2)
+            - multi_rlsRec.m : multi-model recursive least square (multi_rls.m modified for online learning)
+            - probablistic_clustering.m : refinement of the mode assignement/transition matrix estimate (Algorithm 3 in Section 3.2)
+            - probablistic_clusteringRec.m : refinement of the mode assignement/transition matrix estimate (probablistic_clustering.m modified for online learning)
+            - the folder 'CompiledCode' contains the compiled files for (MAC only): 
+                - multi_rls.m
+                - probablistic_clustering.m 
+                - multi_rlsRec.m
+                - probablistic_clusteringRec.m 
+    - The subfolder 'Validation' contains:
+        - ValMJLS.m : function that has to be called to perform the validation of the model
+        - the folder 'functions' constains:
+            - HMMViterbi.m : implementation of the Viterbi algorithm (described in the paper references [16]-[17])
+* The folder 'Examples' contains all the functions and the required datasets to reproduce the examples reported in Section 4 of [1].
+    - The subfolder 'MJLS identification' contains all the functions required to reproduce the example reported in Section 4.2.1
+        -The folder 'Generate Data' contains two functions that are used to build the synthetic datasets:
+            - generateData_mjls.m
+            - generateData_Onlinemjls.m : dataset used for the part of the example on online-learning
+            - genSequenceState.m : used to generate the mode sequence, simulating the Markov Chain behaviour
+        - CovergenceTest.m : script that has to be run to perform the empirical convergence analysis of the method
+        - MonteCarloSimulation.m : script that has to be run to perform the Monte Carlo test
+        - NTest.m : script that has to be used to evaluate the method with training sets of increasing dimension
+        - SNRTest.m : script that has to be run to assess the performance of the approach for different noise levels
+        - OnlineTest.m : script that has to be run to assess the performance of the approach for online learning
+     - The subfolder 'Electric Power Consumption' contains all the functions required to reproduce the example reported in Section 4.2.2    
+        - EnergyConsumption.m : script that allows to perform all the test presented in Section 4.2.2
+        - EnergyPattern.m : script that allows to train and validate the model for the electric power consumption
+        - DistAppl.m : script that allows to test if the obtained models allows to distingush between two different appliances
+        

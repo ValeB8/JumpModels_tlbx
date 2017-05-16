@@ -1,0 +1,47 @@
+**************************************************************************************************************************************************************************
+The toolbox can only be fully used with CVX for Matlab installed. Please install the CVX package!
+**************************************************************************************************************************************************************************
+
+
+Learning Rarely Jump Models (Section 3.1)
+* The folder 'Code' contains all the functions required to train a RJM from data and validate the obtained model
+    - The subfolder 'functions' constains:
+        - solveMJLS.m : function that has to be called to perform the training of the model
+        - the folder 'functions' constains all the functions equired to perform the training:
+            - costEvaluation.m : evaluate the value of the functional
+            - dp_path.m : compute mode sequence
+            - filling_graph.m : build the graph to compute the sequence
+            - jumpOptimizer.m : train the rarely jump model
+            - solve_jump.m : compute model parameters
+            - the folder 'CompiledCode' contains the compiled files for (MAC only): 
+                - dp_path.m
+    - The subfolder 'Least Squares' contains:
+        - LSPB_builder.m : build the function to optimize 
+        - validation_jumpModelsLS.m : code to perform the valiation of the model
+        - the folder 'Analitic solution' constains:
+            - solve_analit.m : analitic solution for the LS problem
+            - filling_graph3.m : build the graph when the analytic solution is used
+            - cost_Evaluation2.m : evaluate the cost when the analytic solution is used
+            - the folder 'Compiled Analitic' constains the compiled code (MAC only) for:
+                - solve_analit.m 
+                - filling_graph3.m 
+                - cost_Evaluation2.m      
+    - The subfolder 'LinearClassifier' contains:
+        - classJM_Data.m : create the set of points to classify and their labels
+        - LclassPB_builder.m : build the function tu optimize
+        - validation_jumpModelclass.m : code to perform the validation of the model        
+* The folder 'Examples' contains all the functions and the required datasets to reproduce the examples reported in Section 4 of [1].
+    - The subfolder 'Jumping Classifier' contains all the functions required to reproduce the example reported in Section 4.1.1
+        -The folder 'functionsANDdata' contains:
+            - filling_graphClass.m : build the graph to compute the state sequence (used for validation purposes only)
+            - genSequenceState.m : used to generate the mode sequence, simulating the Markov Chain behaviour
+            - QuadraticSVM.mat : trained SVM with quadratic Kernel used for comparison.
+        - JumpClassifier.m : script that allows to reproduce the tests reported in Section 4.1.1.
+     - The subfolder 'Electric Power Consumption RJM' contains all the functions required to reproduce the example reported in Section 4.1.2    
+        - EnergyConsumptionRJM.m : script that allows to perform all the test presented in Section 4.1.2
+        - EnergyPatternRJM.m : script that allows to train and validate the model for the electric power consumption
+        - DistApplRJM.m : script that allows to test if the obtained models allows to distingush between two different appliances
+        -The folder 'Utils' contains:
+            - jumpOptimizer_remCritDWE.m : function used to train the DWE model avoiding "bad" initial sequences
+            - s_initcritDWE.mat : intial mode sequences that leads to a "bad" solution of the problem
+   
