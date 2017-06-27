@@ -38,7 +38,7 @@ end
 %% Train and valudate models for the training sets with different length
 for trial=1:length(N)
     [model,nmodes,delaymax,y,u,h,Phi,SNR]=generateData_mjls(N(trial),seedrn_train,seedr_train,2,noise_std);
-    [theta{trial},transition{trial},var_error,eval_time{trial}]=solveMJLS(nmodes,model,y,Phi,delaymax,niter,lambda);
+    [theta{trial},~,transition{trial},var_error,eval_time{trial}]=solveMJLS(nmodes,model,y,Phi,delaymax,niter,lambda);
     [path_vit{trial},y_pred{trial},BFR_pred{trial}]=ValMJLS(nmodes,delaymax,yval,Xval,theta{trial},transition{trial},var_error);
     clear var_error
 end
