@@ -37,7 +37,7 @@ end
 %% Train and valudate models for the training sets with different SNR
 for trial=1:length(noise_std)
     [model,nmodes,delaymax,y,u,h,Phi,SNR{trial}]=generateData_mjls(N,seedrn_train,seedr_train,2,noise_std(trial));
-    [theta{trial},transition{trial},var_error,~]=solveMJLS(nmodes,model,y,Phi,delaymax,niter,lambda);
+    [theta{trial},~,transition{trial},var_error,~]=solveMJLS(nmodes,model,y,Phi,delaymax,niter,lambda);
     [mode_seq{trial},y_pred{trial},BFR_pred{trial}]=ValMJLS(nmodes,delaymax,yval,Xval,theta{trial},transition{trial},var_error);
     clear var_error
 end
