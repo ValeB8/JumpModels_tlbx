@@ -32,7 +32,7 @@ end
 %% Train and valudate models for the training sets increasing the number of refinement iterations
 [model,nmodes,delaymax,y,u,h,Phi,SNR]=generateData_mjls(N,seedrn_train,seedr_train,2,noise_std);
 for iter=1:maxiter
-    [theta,transition,var_error,~]=solveMJLS(nmodes,model,y,Phi,delaymax,iter,lambda);
+    [theta,~,transition,var_error,~]=solveMJLS(nmodes,model,y,Phi,delaymax,iter,lambda);
     [path_vit,ypred,BFR_pred{iter}]=ValMJLS(nmodes,delaymax,yval,Xval,theta,transition,var_error);
     clear theta transition var_error
 end
