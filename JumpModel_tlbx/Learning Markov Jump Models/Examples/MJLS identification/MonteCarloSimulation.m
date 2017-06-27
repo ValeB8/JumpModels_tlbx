@@ -37,7 +37,7 @@ varBFR_pred=zeros(size(yval,2),1);
 %% Monte Carlo trials
 for trial=1:length(seedrn_train)
     [model,nmodes,delaymax,y,u,h,Phi,SNR]=generateData_mjls(N,seedrn_train(trial),seedr_train(trial),2,noise_std);
-    [theta,transition,var_error]=solveMJLS(nmodes,model,y,Phi,delaymax,niter,lambda);
+    [theta,~,transition,var_error]=solveMJLS(nmodes,model,y,Phi,delaymax,niter,lambda);
     [path_vit,ypred,BFR_pred{trial}]=ValMJLS(nmodes,delaymax,yval,Xval,theta,transition,var_error);
     clear theta transition var_error
 end
