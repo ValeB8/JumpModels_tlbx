@@ -12,16 +12,16 @@ N=400;
 Nval=200;
 p=2;
 
-mean=cell([2 1]);
-mean{1}=[0.25 0.4;1 0.5];
-mean{2}=[-0.25 0.8;0.5 1];
+mean_val=cell([2 1]);
+mean_val{1}=[0.25 0.4;1 0.5];
+mean_val{2}=[-0.25 0.8;0.5 1];
 
 seeds.rand=500;
 seeds.randn=seeds.rand;
 
-std=cell([2 1]);
-std{1}=0.15;
-std{2}=std{1};
+std_val=cell([2 1]);
+std_val{1}=0.15;
+std_val{2}=std{1};
 
 p1=[0.99 0.01]; 
 p2=[0.01 0.99];
@@ -30,7 +30,7 @@ P=zeros(2,2);
 P(1,:)=p1;
 P(2,:)=p2;
 
-[y,yval,X,Xval,h,hval]=classJM_Data(N,Nval,p,seeds,mean,std,P);
+[y,yval,X,Xval,h,hval]=classJM_Data(N,Nval,p,seeds,mean_val,std_val,P);
 
 %Set the parameters for jumpOptimizer
 K=2;
@@ -314,7 +314,7 @@ eval_time=cell([n 1]);
 
 for ind=1:n
     %Generate data according to the new value of N
-    [y{ind},~,X{ind},~,h{ind},~]=classJM_Data(N(ind),Nval,p,seeds,mean,std,P);
+    [y{ind},~,X{ind},~,h{ind},~]=classJM_Data(N(ind),Nval,p,seeds,mean_val,std_val,P);
     
     %Define the cost function and the regressor
     [X_model,~,~,~]=LclassPB_builder(N(ind),X{ind},regularization,cons_rgl);
@@ -354,7 +354,7 @@ for ind=1:n
     seeds.rand=possible_seedsR(ind);
     seeds.randn=possible_seedsRN(ind);
     %Generate data according to the new noise seeds
-    [y{ind},~,X{ind},~,h{ind},~]=classJM_Data(N,Nval,p,seeds,mean,std,P);
+    [y{ind},~,X{ind},~,h{ind},~]=classJM_Data(N,Nval,p,seeds,mean_val,std_val,P);
    
     %Define the cost function and the regressor
     [X_model,~,~,~]=LclassPB_builder(N,X{ind},regularization,cons_rgl);
