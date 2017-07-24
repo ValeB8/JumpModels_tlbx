@@ -45,15 +45,20 @@ for t=T-1:-1:1
         e=ones(K,1);
         e(k)=0;
         v=V(:,t+1)+lambda(k)*e;
-        V(k,t)=l(k,t)+min(v);
+        [v_min,mode_bw(k,t+1)]=min(v),
+        V(k,t)=l(k,t)+v_min;
     end
 end
 
 for t=1:T
-    ml_mode=find(V(:,t)==min(V(:,t)));
-    if length(ml_mode)>1
-        ml_mode=ml_mode(1);
-    end
+    if t==1
+        ml_mode=find(V(:,t)==min(V(:,t)));
+        if length(ml_mode)>1
+            ml_mode=ml_mode(1);
+        end
+    else
+        ml_mode=mode_bw(s(t-1),t);
+    end       
     s(t)=ml_mode;
 end
 %time_path=toc;
